@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FraudLens - Google Stitch Design System & Screen Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --surface: #0b1326;
+      --surface-container-low: #131b2e;
+      --surface-container: #171f33;
+      --surface-container-high: #222a3d;
+      --on-surface: #dae2fd;
+      --on-surface-variant: #c2c6d6;
+      --primary: #adc6ff;
+      --primary-container: #4d8eff;
+      --error: #ffb4ab;
+      --tertiary: #ffb95f;
+      --outline: #8c909f;
+      --outline-variant: #424754;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: var(--surface);
+      color: var(--on-surface);
+      font-family: 'Inter', -apple-system, sans-serif;
+      padding: 32px 24px;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    header {
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: 8px;
+      padding: 24px 32px;
+      margin-bottom: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.025em;
+    }
+    .badge {
+      background: rgba(77, 142, 255, 0.15);
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 24px;
+    }
+    .card {
+      background: var(--surface-container);
+      border: 1px solid var(--outline-variant);
+      border-radius: 8px;
+      padding: 24px;
+    }
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--primary);
+      border-bottom: 1px solid var(--outline-variant);
+      padding-bottom: 8px;
+    }
+    .token-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.85rem;
+    }
+    .token-color {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--on-surface-variant);
+    }
+    .preview-frame {
+      border: 1px solid var(--outline-variant);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #000;
+      text-align: center;
+    }
+    .preview-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>FraudLens Forensic Console</h1>
+        <p style="color: var(--on-surface-variant); font-size: 0.9rem; margin-top: 4px;">
+          Google Stitch Design System &bull; Project ID: 5206793673752824329
+        </p>
+      </div>
+      <div class="badge">Mission-Critical Financial Forensics</div>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Core Design Tokens</h2>
+        <div class="token-row">
+          <span><span class="token-color" style="background: #0b1326;"></span>Surface Canvas</span>
+          <span class="mono">#0B1326</span>
+        </div>
+        <div class="token-row">
+          <span><span class="token-color" style="background: #131b2e;"></span>Container Low</span>
+          <span class="mono">#131B2E</span>
+        </div>
+        <div class="token-row">
+          <span><span class="token-color" style="background: #171f33;"></span>Container Base</span>
+          <span class="mono">#171F33</span>
+        </div>
+        <div class="token-row">
+          <span><span class="token-color" style="background: #222a3d;"></span>Container High</span>
+          <span class="mono">#222A3D</span>
+        </div>
+        <div class="token-row">
+          <span><span class="token-color" style="background: #adc6ff;"></span>Primary Accent</span>
+          <span class="mono">#ADC6FF</span>
+        </div>
+        <div class="token-row">
+          <span><span class="token-color" style="background: #4d8eff;"></span>Interactive Blue</span>
+          <span class="mono">#4D8EFF</span>
+        </div>
+        <div class="token-row">
+          <span><span class="token-color" style="background: #ffb4ab;"></span>Critical Risk</span>
+          <span class="mono">#FFB4AB</span>
+        </div>
+        <div class="token-row">
+          <span><span class="token-color" style="background: #ffb95f;"></span>Warning Amber</span>
+          <span class="mono">#FFB95F</span>
+        </div>
+
+        <h2 style="margin-top: 28px;">Typography</h2>
+        <div class="token-row">
+          <span>Headlines & UI</span>
+          <span class="mono">Inter (400, 600, 700)</span>
+        </div>
+        <div class="token-row">
+          <span>Data, Hashes & IDs</span>
+          <span class="mono">JetBrains Mono</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Screen Showcase: Full High-Resolution Mockup</h2>
+        <div class="preview-frame">
+          <img src="screenshot.png" alt="FraudLens - Explainable AI Investigation Dashboard">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
