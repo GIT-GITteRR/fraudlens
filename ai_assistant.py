@@ -164,9 +164,10 @@ def query_llm_assistant(
     if not clean_question:
         clean_question = f"Summarize the forensic evidence and risk factors for Account {account_id}."
 
-    # Look for API keys strictly in environment or override
-    gemini_key = api_key_override or os.getenv("GEMINI_API_KEY", "").strip()
-    openai_key = os.getenv("OPENAI_API_KEY", "").strip()
+    # Look for API keys strictly in environment, st.secrets, or override
+    from graph_db import get_config_val
+    gemini_key = api_key_override or get_config_val("GEMINI_API_KEY", "")
+    openai_key = get_config_val("OPENAI_API_KEY", "")
 
     # -------------------------------------------------------------------------
     # Route 1: Google Gemini API (if GEMINI_API_KEY is configured)

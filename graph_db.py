@@ -11,15 +11,32 @@ from falkordb import FalkorDB
 # Load environment variables
 load_dotenv()
 
+def get_config_val(key: str, default: str = "") -> str:
+    """Reads from environment variables with fallback to st.secrets for cloud deployment."""
+    val = os.getenv(key)
+    if val:
+        return val.strip()
+    try:
+        import streamlit as st
+        if hasattr(st, "secrets") and key in st.secrets:
+            return str(st.secrets[key]).strip()
+    except Exception:
+        pass
+    return default
+
 def get_db_client() -> FalkorDB:
     """
-    Connects to FalkorDB using settings from .env.
+    Connects to FalkorDB using settings from .env or st.secrets.
     Auto-detects host, port, username, and password.
     """
-    host = os.getenv("FALKORDB_HOST", "localhost").strip()
-    port = int(os.getenv("FALKORDB_PORT", "6379").strip())
-    password = os.getenv("FALKORDB_PASSWORD", "").strip() or None
-    username = os.getenv("FALKORDB_USERNAME", "").strip() or None
+    host = get_config_val("FALKORDB_HOST", "localhost")
+    port_str = get_config_val("FALKORDB_PORT", "6379")
+    try:
+        port = int(port_str)
+    except ValueError:
+        port = 6379
+    password = get_config_val("FALKORDB_PASSWORD", "") or None
+    username = get_config_val("FALKORDB_USERNAME", "") or None
 
     # Strip prefixes if entered with redis://
     if host.startswith("redis://"):
@@ -40,7 +57,7 @@ def get_graph(graph_name: Optional[str] = None):
     Defaults to the FALKORDB_GRAPH_NAME specified in .env or 'fraudlens'.
     """
     client = get_db_client()
-    name = graph_name or os.getenv("FALKORDB_GRAPH_NAME", "fraudlens")
+    name = graph_name or get_config_val("FALKORDB_GRAPH_NAME", "fraudlens")
     return client.select_graph(name)
 
 def execute_query(query: str, params: Optional[Dict[str, Any]] = None, graph_name: Optional[str] = None):
